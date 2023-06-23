@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:04:42 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 13:13:23 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:08:51 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	create_map(t_game *so_long, char *file)
 	get_rows(so_long, file);
 	so_long->map = ft_calloc(so_long->rows + 1, sizeof(char *));
 	if (!so_long->map)
-	{
-		free(so_long->map);
 		exit_error(so_long, "Couldn't create so_long->map.");
-	}
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		exit_error(so_long, "Couldn't open requested file.");
