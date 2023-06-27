@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:43:04 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/05/30 12:36:54 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:57:40 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,34 +67,6 @@ char	*ft_strjoin_gnl(char *temp, char *buffer)
 	return (strjoin);
 }
 
-char	*ft_get_line(char *temp)
-{
-	int		i;
-	char	*line;
-
-	i = 0;
-	if (temp[i] == 0)
-		return (NULL);
-	while (temp[i] != '\0' && temp[i] != '\n')
-		i++;
-	if (temp[i] == '\0')
-		line = malloc(sizeof(char) * (i + 1));
-	else
-		line = malloc(sizeof(char) * (i + 2));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (temp[i] != '\0' && temp[i] != '\n')
-	{
-		line[i] = temp[i];
-		i++;
-	}
-	if (temp[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
-	return (line);
-}
-
 char	*ft_new_temp(char *temp)
 {
 	int		i;
@@ -118,5 +90,16 @@ char	*ft_new_temp(char *temp)
 		new_temp[j++] = temp[i++];
 	new_temp[j] = '\0';
 	free(temp);
+	new_temp = ft_new_temp_aux(new_temp);
+	return (new_temp);
+}
+
+char	*ft_new_temp_aux(char *new_temp)
+{
+	if (new_temp[0] == '\0')
+	{
+		free (new_temp);
+		new_temp = 0;
+	}
 	return (new_temp);
 }

@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 12:27:22 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 17:51:25 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:57:54 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_read_and_join(int fd, char *temp)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free (temp);
+			free(temp);
 			free(buffer);
 			return (NULL);
 		}
@@ -35,6 +35,34 @@ char	*ft_read_and_join(int fd, char *temp)
 	}
 	free(buffer);
 	return (temp);
+}
+
+char	*ft_get_line(char *temp)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	if (temp[i] == 0)
+		return (NULL);
+	while (temp[i] != '\0' && temp[i] != '\n')
+		i++;
+	if (temp[i] == '\0')
+		line = malloc(sizeof(char) * (i + 1));
+	else
+		line = malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (temp[i] != '\0' && temp[i] != '\n')
+	{
+		line[i] = temp[i];
+		i++;
+	}
+	if (temp[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
+	return (line);
 }
 
 char	*get_next_line(int fd)

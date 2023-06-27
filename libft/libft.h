@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:50:16 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/12 11:56:51 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:33:13 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ char	*ft_get_line(char *temp);
 char	*ft_new_temp(char *temp);
 char	*ft_strchr_gnl(char *temp, char line_break);
 char	*ft_strjoin_gnl(char *temp, char *buffer);
+char	*ft_new_temp_aux(char *new_temp);
 
 #endif
