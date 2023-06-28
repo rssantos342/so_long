@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:04:59 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/22 18:26:59 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:12:13 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,26 @@ void	load_sprites(t_game *so_long)
 
 void	render_tile(t_game *so_long, int x, int y)
 {
-	t_sprite	sp;
-
 	if (so_long->map[y][x] == WALL)
-		sp = so_long->sp[W1];
+		mlx_put_image_to_window(so_long->mlx, so_long->win, \
+		so_long->sp[W1].img, so_long->sp[W1].width * x, \
+		so_long->sp[W1].height * y);
 	else if (so_long->map[y][x] == COIN)
-		sp = so_long->sp[C1];
+		mlx_put_image_to_window(so_long->mlx, so_long->win, \
+		so_long->sp[C1].img, so_long->sp[C1].width * x, \
+		so_long->sp[C1].height * y);
 	else if (so_long->map[y][x] == EXIT)
-		sp = so_long->sp[E1];
+		mlx_put_image_to_window(so_long->mlx, so_long->win, \
+		so_long->sp[E1].img, so_long->sp[E1].width * x, \
+		so_long->sp[E1].height * y);
 	else if (so_long->map[y][x] == SPACE)
-		sp = so_long->sp[S1];
+		mlx_put_image_to_window(so_long->mlx, so_long->win, \
+		so_long->sp[S1].img, so_long->sp[S1].width * x, \
+		so_long->sp[S1].height * y);
 	else if (so_long->map[y][x] == PLAYER)
-		sp = so_long->sp[P1];
-	mlx_put_image_to_window(so_long->mlx, so_long->win, \
-		sp.img, sp.width * x, sp.height * y);
+		mlx_put_image_to_window(so_long->mlx, so_long->win, \
+		so_long->sp[P1].img, so_long->sp[P1].width * x, \
+		so_long->sp[P1].height * y);
 }
 
 void	render_map(t_game *so_long)

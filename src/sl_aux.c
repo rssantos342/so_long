@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:05:42 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 13:14:57 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:03:07 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ int	exit_error(t_game *so_long, char *msg)
 int	ft_return_msg(t_game *so_long)
 {
 	if (so_long->player != 1)
-		return (1);
+		return (10);
 	else if (so_long->exit != 1)
-		return (2);
+		return (20);
 	else if (so_long->total_coins < 1)
-		return (3);
+		return (30);
 	return (0);
 }
 
 int	flood_fill(int total_coins, int cur_y, int cur_x, char **map_draft)
 {
-	static int	coins = 0;
-	static int	exit = 0;
+	static int	coins;
+	static int	exit;
 
 	if (map_draft[cur_y][cur_x] == WALL)
-		return (1);
+		return (0);
 	else if (map_draft[cur_y][cur_x] == COIN)
 		coins++;
 	else if (map_draft[cur_y][cur_x] == EXIT)
@@ -53,12 +53,13 @@ int	flood_fill(int total_coins, int cur_y, int cur_x, char **map_draft)
 		return (1);
 }
 
-int	check_filename(char *av)
+int	check_filename(char *str)
 {
-	if (!ft_strnstr(&av[1], ".ber", ft_strlen(&av[1])))
-	{	
-		ft_printf("Invalid file extension. Try <map_name>.ber");
+	if (ft_strnstr(str + ft_strlen(str) - 4, ".ber", 4))
 		return (0);
+	else
+	{
+		ft_printf("Invalid file extension. Try <map_name>.ber");
+		return (1);
 	}
-	return (1);
 }

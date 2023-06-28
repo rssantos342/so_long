@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:04:13 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 14:46:09 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:33:12 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_sprites(t_game *so_long)
 			else if (so_long->map[i][j] == COIN)
 				so_long->total_coins++;
 			else if (!ft_strchr("01CEP", so_long->map[i][j]))
-				return (4);
+				return (40);
 		}
 	}
 	return (ft_return_msg(so_long));
@@ -112,13 +112,13 @@ void	check_map(t_game *so_long)
 	if (check_walls(so_long))
 		exit_error(so_long, "Map is not surrounded by walls.");
 	i = check_sprites(so_long);
-	if (i == 1)
+	if (i == 10)
 		exit_error(so_long, "Map has invalid number of players.");
-	else if (i == 2)
+	else if (i == 20)
 		exit_error(so_long, "Map has invalid number of exits.");
-	else if (i == 3)
+	else if (i == 30)
 		exit_error(so_long, "Map has invalid number of coins.");
-	else if (i == 4)
+	else if (i == 40)
 		exit_error(so_long, "Map has invalid characters.");
 	if (check_paths(so_long))
 		exit_error(so_long, "Map has an invalid path.");

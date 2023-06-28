@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:52:14 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 13:13:42 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:23:40 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	main(int ac, char **av)
 	if (ac != 2)
 	{
 		ft_printf("Wrong number of arguments.\nTry ./so_long <map>\n");
-		return (0);
+		return (1);
 	}
 	else
 	{
-		if (check_filename(av[1]))
+		if (!check_filename(av[1]))
 			start_game(av[1]);
 		else
-			return (0);
+			return (1);
 	}
 }

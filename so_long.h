@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:30:55 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 13:24:09 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:46:26 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,53 +18,42 @@
 
 # define SIZE		32
 # define SPRITES	5
-# define FW1		"sprites/1.xpm"
-# define FS1		"sprites/0.xpm"
-# define FC1		"sprites/c.xpm"
-# define FE1		"sprites/e.xpm"
-# define FP1		"sprites/p.xpm"
 
-typedef enum e_tile
-{
-	SPACE	= '0',
-	WALL	= '1',
-	COIN	= 'C',
-	EXIT	= 'E',
-	PLAYER	= 'P',
-}			t_tile;
+# define FW1	"sprites/1.xpm"
+# define FS1	"sprites/0.xpm"
+# define FC1	"sprites/c.xpm"
+# define FE1	"sprites/e.xpm"
+# define FP1	"sprites/p.xpm"
 
-typedef enum e_index
-{
-	W1,
-	S1,
-	C1,
-	E1,
-	P1,
-}		t_id;
+# define SPACE	'0'
+# define WALL	'1'
+# define COIN	'C'
+# define EXIT	'E'
+# define PLAYER	'P'
 
-typedef enum e_key
-{
-	ESC		= 65307,
-	W		= 119,
-	A		= 97,
-	S		= 115,
-	D		= 100,
-	UP		= 65362,
-	DOWN	= 65364,
-	LEFT	= 65361,
-	RIGHT	= 65363,
-}			t_key;
+# define W1	0
+# define S1	1
+# define C1	2
+# define E1	3
+# define P1	4
 
-typedef enum e_event
-{
-	ON_KEYPRESS	= 2,
-	ON_CLOSE	= 17,
-}				t_event;
+# define ESC	65307
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define UP		65362
+# define DOWN	65364
+# define LEFT	65361
+# define RIGHT	65363
+
+# define ON_KEYPRESS	2
+# define ON_CLOSE		17
 
 typedef enum e_mask
 {
 	KEYPRESS_MASK	= (1L << 0),
-	CLOSE_MASK		= (1L << 17)
+	CLOSE_MASK		= (1L << 17),
 }					t_mask;
 
 typedef struct s_point
@@ -101,7 +90,7 @@ typedef struct s_game
 int		exit_error(t_game *so_long, char *msg);
 int		ft_return_msg(t_game *so_long);
 int		flood_fill(int total_coins, int cur_y, int cur_x, char **map_draft);
-int		check_filename(char *av);
+int		check_filename(char *str);
 //sl_check_map.c
 int		check_format(t_game *so_long);
 int		check_walls(t_game *so_long);

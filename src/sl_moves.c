@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:05:14 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/06/23 13:26:27 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:50:53 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_player(t_game *so_long)
 {
-	static int	flag = 0;
+	static int	flag;
 
 	if (flag == 1)
 	{
@@ -64,7 +64,11 @@ void	ft_no_wall(int key, t_game *so_long)
 {
 	if (key == W || key == A || key == D || key == S \
 		|| key == UP || key == DOWN || key == LEFT || key == RIGHT)
+	{
+		if (so_long->moves == 0)
+			ft_printf("\n");
 		ft_printf("Number of moves: %i\n", ++so_long->moves);
+	}	
 	if (so_long->map[so_long->curr.y][so_long->curr.x] == COIN)
 		so_long->coins++;
 	else if (so_long->map[so_long->curr.y][so_long->curr.x] == EXIT \
